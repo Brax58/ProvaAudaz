@@ -1,8 +1,8 @@
 ﻿using ProvaAudaz.Entity;
+using ProvaAudaz.Model;
 using ProvaAudaz.Repository;
 using System;
 using System.Collections.Generic;
-using TestePleno.Models;
 
 namespace ProvaAudaz.Service
 {
@@ -26,12 +26,12 @@ namespace ProvaAudaz.Service
             if (operatorId == Guid.Empty)
                 operatorId = _operatorService.Create(request.OperatorCode);
 
-            var ExistFire = _fareRepository.GetById(operatorId, request.Id);
+            var fare = new Fare(operatorId, request.Value);
+
+            var ExistFire = _fareRepository.GetById(operatorId, fare.Id);
 
             if (ExistFire != null)
                 throw new Exception("Já existe um tarifa criada com essa operadora!");
-
-            var fare = new Fare(operatorId, request.Value);
 
             _fareRepository.Insert(fare);
         }
@@ -40,24 +40,24 @@ namespace ProvaAudaz.Service
         {
             Guid operatorId = Guid.Empty;
 
-            var operatorIdExist = _operatorService.GetByCode(request.OperatorCode);
+            operatorId = _operatorService.GetByCode(request.OperatorCode);
 
-            if (operatorIdExist == Guid.Empty)
+            if (operatorId == Guid.Empty)
                 operatorId = _operatorService.Create(request.OperatorCode);
 
-            var ExistFire = _fareRepository.GetById(operatorId ,request.Id);
+            var fare = new Fare(request.Id,operatorId, request.Value);
+
+            var ExistFire = _fareRepository.GetById(operatorId, fare.Id);
 
             if (ExistFire != null)
-                _fareRepository.Delete(ExistFire.Id);
-
-            var fare = new Fare(operatorId, request.Value);
+                throw new Exception("Já existe um tarifa criada com essa operadora!");
 
             _fareRepository.Update(fare);
         }
 
         public Fare GetFareById(Guid operatorId, Guid fareId)
         {
-            return _fareRepository.GetById(operatorId,fareId);
+            return _fareRepository.GetById(operatorId, fareId);
         }
 
         public List<Fare> GetFares()

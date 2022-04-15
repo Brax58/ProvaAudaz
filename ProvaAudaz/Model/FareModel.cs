@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestePleno.Models
+namespace ProvaAudaz.Model
 {
     public class FareModel
     {
@@ -18,6 +18,7 @@ namespace TestePleno.Models
 
         public FareModel(string operatorCode, decimal value)
         {
+            Id = Guid.NewGuid();
             OperatorCode = operatorCode;
             Value = value;
         }

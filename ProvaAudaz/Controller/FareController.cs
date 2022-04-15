@@ -1,5 +1,5 @@
-﻿using ProvaAudaz.Service;
-using TestePleno.Models;
+﻿using ProvaAudaz.Model;
+using ProvaAudaz.Service;;
 
 namespace ProvaAudaz.Controller
 {

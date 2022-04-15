@@ -1,16 +1,14 @@
 ﻿using ProvaAudaz.Controller;
+using ProvaAudaz.Model;
 using System;
-using TestePleno.Models;
 
-namespace TestePleno
+namespace ProvaAudaz
 {
     class Program
     {
-        private int ControllerInstance = 0;
-
         static void Main(string[] args)
         {
-            int again = 0;
+            int again;
 
             var controller = new FareController();
 
@@ -21,9 +19,9 @@ namespace TestePleno
 
                 Console.WriteLine("Informe o código da operadora para a tarifa:");
                 Console.WriteLine("Exemplos: OP01, OP02, OP03...");
-                var operatorCodeInput = Console.ReadLine();
+                var operatorCode = Console.ReadLine();
 
-                var fareModel = new FareModel(operatorCodeInput, valorTarifa);
+                var fareModel = new FareModel(operatorCode, valorTarifa);
 
                 controller.CreateFare(fareModel);
 

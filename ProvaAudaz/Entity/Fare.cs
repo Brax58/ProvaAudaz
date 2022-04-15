@@ -16,5 +16,13 @@ namespace ProvaAudaz.Entity
             OperatorId = operatorId;
             Value = value;
         }
+
+        public Fare(Guid id,Guid operatorId, decimal value)
+        {
+            Id = id;
+            Status = 1;
+            OperatorId = operatorId;
+            Value = value;
+        }
     }
 }

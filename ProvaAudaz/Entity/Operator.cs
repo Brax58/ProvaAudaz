@@ -6,11 +6,6 @@ namespace ProvaAudaz.Entity
     {
         public string Code { get; private set; }
 
-        public Operator()
-        {
-
-        }
-
         public Operator(string code)
         {
             Code = code;

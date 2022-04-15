@@ -1,8 +1,8 @@
 ﻿using ProvaAudaz.Entity;
+using ProvaAudaz.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TestePleno.Models;
 
 namespace ProvaAudaz.Repository
 {
@@ -25,7 +25,7 @@ namespace ProvaAudaz.Repository
             _fakeDatabase.Add(request);
         }
 
-        public Fare GetById(Guid OperatorId,Guid idFare)
+        public Fare GetById(Guid OperatorId,Guid? idFare = null)
         {
             return _fakeDatabase.FirstOrDefault(savedModel => savedModel.OperatorId == OperatorId && savedModel.Id != idFare && savedModel.Status == 1);
         }

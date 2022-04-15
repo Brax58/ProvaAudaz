@@ -18,11 +18,6 @@ namespace ProvaAudaz.Service
             if (string.IsNullOrEmpty(request))
                 throw new Exception("Código deve ser preenchido!");
 
-            var ExisteOperator = _operatorRepository.GetByCode(request);
-
-            if (ExisteOperator != Guid.Empty)
-                throw new Exception("Operadora Já foi cadastrada!");
-
             var operatorInsert = new Operator(request);
 
             _operatorRepository.Insert(operatorInsert);
