@@ -1,10 +1,9 @@
-﻿using System;
+﻿using ProvaAudaz.Entity.Base;
 
 namespace ProvaAudaz.Entity
 {
-    public class Operator
+    public class Operator : EntityBase
     {
-        public Guid Id { get; private set; }
         public string Code { get; private set; }
 
         public Operator()
@@ -14,7 +13,6 @@ namespace ProvaAudaz.Entity
 
         public Operator(string code)
         {
-            Id = Guid.NewGuid();
             Code = code;
         }
     }
